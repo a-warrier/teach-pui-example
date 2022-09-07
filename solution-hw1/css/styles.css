@@ -8,16 +8,19 @@ hr {
     background-color: black;
 }
 
+/* image hyperlinks formatting (no underlines, default purple colored outline etc) */
 a img {
     outline : none;
 }
 
+/* general hyperlinks formatting (no underlines, default purple color etc) */
 a, a:visited {
     text-decoration: none;
     color: black;
     outline : none;
 }
 
+/* general header hyperlinks formatting (no underlines, default purple color etc) */
 h2 a {
     text-decoration: none;
     color: black;
@@ -27,15 +30,18 @@ h2 a:hover {
     background-color: yellow;
 }
 
+/* shop navigation info to products and cart pages */
 .shop-info h2 {
     text-align: center;
 }
 
+/* header formatting for top/main caption of each page */
 .header h3 {
     text-align: center;
     margin: 80px 0 20px 0;
 }
 
+/* grouped product image, name and price as a single product card on main page */
 .product-card {
     width: 250px;
     margin-left: auto;
@@ -44,30 +50,36 @@ h2 a:hover {
     padding: 5px 5px 5px 5px;
 }
 
+/* hover formatting for product cards to change to yellow */
 .product-card:hover {
     font-weight: bold;
     background-color: yellow;
 }
 
+/* product name formatting */
 .product-name {
     margin-top: 10px;
 }
 
+/* product name hyperlink formatting (no underlines, default purple color etc) */
 .product-name a {
     text-decoration: none;
     color: black;
 }
 
+/* product price formatting (placed close, right after name) */
 .product-price p {
     margin-top: 5px;
 }
 
+/* product detail image formatting */
 .detail-img {
     width: 400px;
     margin-left: auto;
     margin-right: auto;
 }
 
+/* product detail page caption formatting */
 .detail-caption {
     width: 250px;
     margin-left: auto;
@@ -75,6 +87,7 @@ h2 a:hover {
     font-weight: bold;
 }
 
+/* dropdown formatting */
 .select-choice {
     width: 250px;
     margin-left: auto;
@@ -84,12 +97,14 @@ h2 a:hover {
     font-weight: bold;
 }
 
+/* dropdown text formatting */
 .dropdown select {
     font-size: 16px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
 
+/* each item of bill is considered as a separate unit */
 .item {
     width: 400px;
     margin-top: 60px;
@@ -98,22 +113,26 @@ h2 a:hover {
     margin-right: auto;
 }
 
+/* items of bill are centered aligned */
 .item {
     text-align: center;
 }
 
+/* format of item details text in bill */
 .item p {
     margin-bottom: 5px;
     margin-top: 5px;
     font-weight: bold;
 }
 
+/* bill formatting is centered aligned */
 .bill {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
+/*bill horizontal line - shorter width, displayed above total price */
 .bill hr {
     width: 40%;
     border: none;
@@ -123,10 +142,12 @@ h2 a:hover {
     margin-right: auto;
 }
 
+/* bill summary that has the total price and checkout button */
 .bill-summary {
     margin-bottom: 100px;
 }
 
+/* button formatting */
 .btn {
     width: fit-content;
     border: 2px solid black;
@@ -142,6 +163,7 @@ h2 a:hover {
     margin-right: auto;
 }
 
+/* using a flex box to position the price text and 'add to cart' button in the center */
 .cart-detail {
     display: flex;
     justify-content: center;
@@ -150,6 +172,7 @@ h2 a:hover {
     margin-bottom: 100px;
 }
 
+/* price text and 'add to cart' button grouped as a flex box */
 .cart-elements {
     display: flex;
     width: 250px;
