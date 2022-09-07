@@ -1,5 +1,5 @@
-# PUI homework
+# PUI homework 1
 
-Deployed website: `add the URL to your deployed website`
+Deployed website: `https://a-warrier.github.io/teach-pui-example/solution-hw1/index.html`
 
-Repository link: `add the URL to this repository`
+Repository link: `https://github.com/a-warrier/teach-pui-example/tree/main/solution-hw1`
