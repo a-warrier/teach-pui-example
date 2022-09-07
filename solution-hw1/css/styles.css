@@ -14,7 +14,8 @@ a img {
 
 a, a:visited {
     text-decoration: none;
-    color: black
+    color: black;
+    outline : none;
 }
 
 h2 a {
