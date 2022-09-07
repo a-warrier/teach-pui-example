@@ -8,6 +8,10 @@ hr {
     background-color: black;
 }
 
+a img {
+    outline : none;
+}
+
 a, a:visited {
     text-decoration: none;
     color: black
