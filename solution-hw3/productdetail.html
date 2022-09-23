@@ -1,0 +1,79 @@
+<!-- Product Detail Page -->
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <title>Page Title</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script> 
+  
+  <body>
+    <div class="header-parent">
+      <div class="header-child-left">
+        <div class="logo">
+          <a href="./index.html">
+            <img src="assets/logo/logo-01.svg" alt="BunBun BakeShop logo" width="400px">
+          </a>
+        </div>
+      </div>
+
+      <div class="header-child-right">
+        <div class="shop-info">
+          <h2><a href="./index.html">PRODUCTS</a><a href="./cart.html">CART</a></h2>
+        </div>
+
+        <hr>
+
+        <div class="header">
+          <h3>Original cinnamon roll</h3>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="detail-flex-parent">
+      <div class="detail-flex-left">
+        <div class="detail-img">
+          <img src="assets/products/original-cinnamon-roll.jpg" alt="original cinnamon roll" width="400px" border="5px">
+        </div>
+      </div>
+      
+      <div class="detail-flex-right">
+        <div class="detail-caption">
+          <p>Customise our delicious,<br>handmade cinnamon roll to<br>your liking!</p>
+        </div>
+
+
+        <div class="select-glazing">
+          <p>Glazing</p>
+          <div class="dropdown">
+              <select id="glazing-options"
+                  onchange="totalChange(this)">
+              </select>
+          </div>
+        </div>
+
+        <div class="select-packsize">
+          <p>Pack size</p>
+          <div class="dropdown">
+              <select id="pack-options"
+                  onchange="totalChange(this)">
+              </select>
+          </div>
+        </div>
+          
+  
+        <div class="cart-detail">
+          <div class="cart-price">
+            <p>$2.45</p>
+          </div>
+          <div class="cart-btn">
+            <a href="#" class="btn">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+ 
+
+  </body>
+</html>
