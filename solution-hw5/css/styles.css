@@ -1,0 +1,237 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+hr {
+    border: none;
+    height: 4px;
+    background-color: black;
+}
+
+/* image hyperlinks formatting (no underlines, default purple colored outline etc) */
+a img {
+    outline : none;
+}
+
+p {
+    margin: 0;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+/* general hyperlinks formatting (no underlines, default purple color etc) */
+a, a:visited {
+    text-decoration: none;
+    color: black;
+    outline : none;
+}
+
+/* general header hyperlinks formatting (no underlines, default purple color etc) */
+h2 a {
+    text-decoration: none;
+    color: black;
+}
+
+h2 a:hover {
+    background-color: yellow;
+}
+
+/* shop navigation info to products and cart pages */
+.shop-info h2 {
+    text-align: center;
+}
+
+/* header formatting for top/main caption of each page */
+.header h3 {
+    text-align: left;
+    margin-top: 80px;
+    font-size: 24px;
+}
+
+/* grouped product image, name and price as a single product card on main page */
+.product-card {
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 5px 5px 5px 5px;
+}
+
+/* hover formatting for product cards to change to yellow */
+.product-card:hover {
+    font-weight: bold;
+    background-color: yellow;
+}
+
+/* product name formatting */
+.product-name {
+    margin-top: 10px;
+}
+
+/* product name hyperlink formatting (no underlines, default purple color etc) */
+.product-name a {
+    text-decoration: none;
+    color: black;
+}
+
+/* product price formatting (placed close, right after name) */
+.product-price p {
+    margin-top: 5px;
+}
+
+/* product detail image formatting */
+.detail-img {
+    width: 400px;
+}
+
+/* product detail page caption formatting */
+.detail-caption {
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+/* dropdown formatting */
+.select-glazing {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    font-weight: bold;
+}
+
+/* dropdown formatting */
+.select-packsize {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    font-weight: bold;
+}
+
+/* dropdown text formatting */
+.dropdown select {
+    width: 300px;
+    border: 3px;
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+/*bill horizontal line - shorter width, displayed above total price */
+.bill-info hr {
+    width: 40%;
+    border: none;
+    height: 4px;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* bill summary that has the total price and checkout button */
+.bill-summary {
+    margin-bottom: 20px;
+}
+
+/* button formatting */
+.btn {
+    width: fit-content;
+    border: 2px solid black;
+    background-color: yellow;
+    color: black;
+    padding: 14px 28px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+}
+
+/* using a flex box to position the price text and 'add to cart' button in the center */
+.cart-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 50px;
+    width: 250px;
+}
+
+/* header parent flex box */
+.header-parent {
+    display: flex;
+}
+
+/* header child flex box for the logo */
+.header-child-left {
+    flex: 1;
+}
+
+/* header child flex box for the nav bar */
+.header-child-right {
+    flex: 3;
+}
+
+/* nav bar flex box */
+.shop-info {
+    display: flex;
+    justify-content: right;
+}
+
+/* nav links */
+.shop-info a {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+/* all products */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+
+/* product details */
+.detail-flex-parent {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+/* product detail layout */
+.detail-flex-right {
+    display: flex;
+    flex-direction: column;
+}
+
+/* bill details */
+.bill-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 50px;
+    margin-top: 30px;
+}
+
+.item-detail {
+    margin-left: 20px;
+}
+
+.bill-right, .bill-left {
+    display: flex;
+    font-weight: bold;
+    font-size: 16px;
+    align-items: center;
+}
+
+.bill-summary {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 50px;
+    margin-top: 20px;
+}
