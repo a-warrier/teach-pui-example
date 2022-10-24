@@ -70,6 +70,9 @@ const rollType = params.get('roll');
 // extracting base price for roll from the JSON
 let basePrice = rolls[rollType].basePrice;
 
+// update cart price for each roll
+document.getElementsByClassName('cart-price')[0].innerHTML = '$' + basePrice;
+
 let glazePrice = 0; // initializing default to 0
 let packPrice = 1;  // multiplying, so making this default value as 1
 let totalPrice = 0; // initializing default to 0

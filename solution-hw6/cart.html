@@ -1,0 +1,86 @@
+<!-- Shopping Cart Page -->
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <title>Page Title</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/rollsData.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  
+  <body>
+    <div class="header-parent">
+      <div class="header-child-left">
+        <div class="logo">
+          <a href="./index.html">
+            <img src="assets/logo/logo-01.svg" alt="BunBun BakeShop logo" width="400px">
+          </a>
+        </div>
+      </div>
+
+      <div class="header-child-right">
+        <div class="shop-info">
+          <h2><a href="./index.html">PRODUCTS</a><a href="./cart.html">CART</a></h2>
+        </div>
+
+        <hr>
+
+        <div class="header">
+          <h3>Shopping Cart</h3>
+        </div>
+
+        <div id="bill">
+          <template id="bill-template">
+            <div class="bill-item">
+
+              <div class="bill-info">
+                
+                <div class="bill-left">
+                  <div class="item-img">
+                    <img src="assets/products/original-cinnamon-roll.jpg" alt="original cinnamon roll" width="150px" border="5px">
+                  </div>
+                  <div class="item-detail">
+                    <div class="roll-type">
+                      <p>Original Cinnamon Roll</p>
+                    </div>
+                    <div class="roll-glazing">
+                      <p>Glazing: Keep Original</p>
+                    </div>
+                    <div class="roll-packsize">
+                      <p>Pack Size: 1</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bill-right">
+                  <div class="roll-price">
+                    <p>$2.49</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="remove-item">
+                <a href="#" class="underline">Remove</a>
+              </div>
+            </div>
+          </template>  
+        </div>
+
+        <br><br><hr>
+
+        <div class="bill-summary">
+          <div class="total-text">
+            <p>Total</p>
+          </div>
+          <div class="total-price">
+            <p>$29.94</p>
+          </div>
+        </div>
+
+        <div class="checkout">
+          <a href="#" class="btn" style="float: right;">Checkout</a>
+        </div>
+    </div>
+
+  </body>
+</html>
