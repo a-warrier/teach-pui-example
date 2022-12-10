@@ -19,6 +19,7 @@
 
 <!-- Main HTML content -->
 <body>
+<!-- Create a div for the header and visualization caption -->
 <header>
   <h1 class="title">Visualizing Spotify Hits</h1>
   <i class="material-icons" style="font-size:42px;color:#1db954;">favorite</i>
@@ -29,7 +30,7 @@ The y axis represents the <i style="color:#1db954">beats per minute</i> for the 
 The bubbles represent the <i style="color:#1db954">popularity</i> of the song. </br></br>
 <b style="color:#8dd697">Hover over the bubbles to read the song and artist information!</b>
 </figcaption>
-<!-- Create a div where the graph will take place -->
+<!-- Create a div where the visualization graph will be placed -->
 <figure id="my_dataviz"></figure>
 </body>
 
@@ -42,7 +43,6 @@ header {
   display: flex;
   margin-left: 20px;
 }
-
 .material-icons {
   margin-top: 20px;
   margin-left: 10px;
@@ -83,19 +83,16 @@ header {
 </style>
 
 <script>
-
-    // Determine current size, which determines variables
-
+    // Determine current size of device, which determines size of bubble chart (making the chart responsive)
     let current_width = window.innerWidth
     let current_height = window.innerHeight
-    console.log("Current Width and height: ", current_width, current_height);
 
-    // set the dimensions and margins of the graph
+    // Set the dimensions and margins of the graph
     let margin = {top: 10, right: 150, bottom: 60, left: 120},
         width = current_width - margin.left - margin.right,
         height = current_height - margin.top - margin.bottom;
     
-    // append the svg object to the body of the page
+    // Append the svg object to the body of the page
     let svg = d3.select("#my_dataviz")
       .append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -104,7 +101,7 @@ header {
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
       
-    //Read the data
+    // Read the data from the CSV and format the chart
     d3.csv("top10s-3.csv", function(data) {
       
       // ---------------------------//
@@ -122,7 +119,7 @@ header {
         .call(d3.axisBottom(x).ticks().tickFormat(d3.format("d")))
         .call(g => g.select(".domain").remove());
 
-      // Add X axis label:
+      // Add X axis label
       svg.append("text")
           .attr("text-anchor", "end")
           .attr("class", "textWhite")
@@ -140,7 +137,7 @@ header {
         .attr("class", "axisWhite")
         .call(g => g.select(".domain").remove());
 
-      // Add Y axis label:
+      // Add Y axis label
       svg.append("text")
         .attr("text-anchor", "start")
         .attr("transform", "rotate(-90)")
@@ -229,7 +226,6 @@ header {
       // ---------------------------//
       // Add dots
 
-      console.log(data.pop)
       svg.append('g')
         .selectAll("dot")
         .data(data)
@@ -244,7 +240,6 @@ header {
         .on("mouseover", showTooltip )
         .on("mousemove", moveTooltip )
         .on("mouseleave", hideTooltip )
-    })
-    
+    })    
 </script>
 </html>
