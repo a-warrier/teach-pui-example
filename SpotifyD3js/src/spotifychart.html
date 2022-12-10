@@ -1,5 +1,13 @@
+<!-- This D3js code converts the data from "top10s-3.csv" to an interactive bubble chart. The CSV file consists
+    details on popularity, beats per minute, energy etc for 5 songs, per year, through 2010 to 2019 -->
+
+<!-- The following code has references from the D3js documentation on bubble charts - link provided below:
+    https://d3-graph-gallery.com/graph/bubble_template.html
+-->
+
 <!DOCTYPE html>
 <meta charset="utf-8">
+<title>PUI Final Project</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <!-- Load d3.js -->
@@ -7,6 +15,8 @@
 
 <!-- Load color scale -->
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<!-- Main HTML content -->
 <body>
 <div class="title-box">
   <h1 class="title">Visualizing Spotify Hits</h1>
@@ -21,7 +31,8 @@ The bubbles represent the <i style="color:#1db954">popularity</i> of the song. <
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 </body>
-<!-- A bit of CSS: change stroke color of circle on hover (white -> black) -->
+
+<!-- CSS style elements and details -->
 <style>
 body {
 background-color: black;
@@ -72,7 +83,7 @@ background-color: black;
 
 <script>
 
-// Determine current size, which determines variables
+    // Determine current size, which determines variables
 
     let current_width = window.innerWidth
     let current_height = window.innerHeight
@@ -91,10 +102,10 @@ background-color: black;
       .append("g")
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
-    
+      
     //Read the data
     d3.csv("top10s-3.csv", function(data) {
-    
+      
       // ---------------------------//
       //       AXIS  AND SCALE      //
       // ---------------------------//
@@ -143,7 +154,7 @@ background-color: black;
         .domain([1, 100])
         .range([ 2, 100]);
     
-      // Add a scale for bubble color
+      // Add a spotify green gradient/heat map for the bubble colors
       let colours =  ["#ffffff",
                       "#daf2dc",
                       "#b4e4b9",
