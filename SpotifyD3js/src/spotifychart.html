@@ -19,18 +19,18 @@
 
 <!-- Main HTML content -->
 <body>
-<div class="title-box">
+<header>
   <h1 class="title">Visualizing Spotify Hits</h1>
   <i class="material-icons" style="font-size:42px;color:#1db954;">favorite</i>
-</div>
-<p class="intro">This is a bubble chart that picks 5 songs from every year in the last decade, between 2010 and 2020. </br>
+</header>
+<figcaption class="intro">This is a bubble chart that picks 5 songs from every year in the last decade, between 2010 and 2020. </br>
 The x axis represents the <i style="color:#1db954">year</i> in which the song was released.
 The y axis represents the <i style="color:#1db954">beats per minute</i> for the song. </br>
 The bubbles represent the <i style="color:#1db954">popularity</i> of the song. </br></br>
 <b style="color:#8dd697">Hover over the bubbles to read the song and artist information!</b>
-</p>
+</figcaption>
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<figure id="my_dataviz"></figure>
 </body>
 
 <!-- CSS style elements and details -->
@@ -38,7 +38,7 @@ The bubbles represent the <i style="color:#1db954">popularity</i> of the song. <
 body {
 background-color: black;
 }
-.title-box {
+header {
   display: flex;
   margin-left: 20px;
 }
