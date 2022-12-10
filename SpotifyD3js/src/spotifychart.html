@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Load color scale -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<body>
+<div class="title-box">
+  <h1 class="title">Visualizing Spotify Hits</h1>
+  <i class="material-icons" style="font-size:42px;color:#1db954;">favorite</i>
+</div>
+<p class="intro">This is a bubble chart that picks 5 songs from every year in the last decade, between 2010 and 2020. </br>
+The x axis represents the <i style="color:#1db954">year</i> in which the song was released.
+The y axis represents the <i style="color:#1db954">beats per minute</i> for the song. </br>
+The bubbles represent the <i style="color:#1db954">popularity</i> of the song. </br></br>
+<b style="color:#8dd697">Hover over the bubbles to read the song and artist information!</b>
+</p>
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+</body>
+<!-- A bit of CSS: change stroke color of circle on hover (white -> black) -->
+<style>
+body {
+background-color: black;
+}
+.title-box {
+  display: flex;
+  margin-left: 20px;
+}
+
+.material-icons {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.title {
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.intro {
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  margin-left: 20px;
+}
+.axisWhite {
+  stroke: white;
+}
+.textWhite {
+  fill: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+}
+.bubbles {
+  stroke-width: 1px;
+  stroke: black;
+  opacity: .81
+}
+.bubbles:hover {
+  stroke: black;
+}
+#my_dataviz {
+ position: relative;
+}
+.tooltip {
+  position: absolute;
+  text-align: center;
+}
+</style>
+
+<script>
+
+// Determine current size, which determines variables
+
+    let current_width = window.innerWidth
+    let current_height = window.innerHeight
+    console.log("Current Width and height: ", current_width, current_height);
+
+    // set the dimensions and margins of the graph
+    let margin = {top: 10, right: 150, bottom: 60, left: 120},
+        width = current_width - margin.left - margin.right,
+        height = current_height - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    let svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    //Read the data
+    d3.csv("top10s-3.csv", function(data) {
+    
+      // ---------------------------//
+      //       AXIS  AND SCALE      //
+      // ---------------------------//
+    
+      // Add X axis
+      let x = d3.scaleLinear()
+        .domain([2009.5, 2020])
+        .range([ 0, width ]);
+        
+      svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .attr("class", "axisWhite")
+        .call(d3.axisBottom(x).ticks().tickFormat(d3.format("d")))
+        .call(g => g.select(".domain").remove());
+
+      // Add X axis label:
+      svg.append("text")
+          .attr("text-anchor", "end")
+          .attr("class", "textWhite")
+          .attr("x", width)
+          .attr("y", height+50 )
+          .text("Year");
+   
+      // Add Y axis
+      let y = d3.scaleLinear()
+        .domain([50, 210])
+        .range([ height, 0]);
+
+      svg.append("g")
+        .call(d3.axisLeft(y))
+        .attr("class", "axisWhite")
+        .call(g => g.select(".domain").remove());
+
+      // Add Y axis label:
+      svg.append("text")
+        .attr("text-anchor", "start")
+        .attr("transform", "rotate(-90)")
+        .attr("class", "textWhite")
+        .attr("x", -150 )
+        .attr("y", -50 )
+        .text("Beats per Minute");
+
+      // Add a scale for bubble size
+      let z = d3.scalePow()
+        .exponent(5)
+        .domain([1, 100])
+        .range([ 2, 100]);
+    
+      // Add a scale for bubble color
+      let colours =  ["#ffffff",
+                      "#daf2dc",
+                      "#b4e4b9",
+                      "#8dd697",
+                      "#60c876",
+                      "#1db954"];
+
+      let heatmapColour = d3.scaleThreshold()
+        .domain([30, 60, 70, 76, 85])
+        .range(colours);
+    
+      // ---------------------------//
+      //      TOOLTIP               //
+      // ---------------------------//
+    
+      // -1- Create a tooltip div that is hidden by default:
+      let tooltip = d3.select("#my_dataviz")
+        .append("div")
+          .style("opacity", 0)
+          .attr("class", "tooltip")
+          .style("background-color", "#212121")
+          .style("border-radius", "5px")
+          .style("padding", "10px")
+          .style("color", "white")
+          .style("font-family", "Verdana, Geneva, Tahoma, sans-serif")
+          .style("font-size", "12px");
+    
+      // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
+      let showTooltip = function(d) {
+        tooltip
+          .transition()
+          .duration(200)
+        tooltip
+          .style("opacity", 1)
+          .html("Song: " + d.title + "<br /> Artist: " + d.artist)
+          .attr("data-html", "true")
+          .style("left", (d3.mouse(this)[0]+30) + "px")
+          .style("top", (d3.mouse(this)[1]+30) + "px")
+      }
+      let moveTooltip = function(d) {
+        tooltip
+          .style("left", (d3.mouse(this)[0]+30) + "px")
+          .style("top", (d3.mouse(this)[1]+30) + "px")
+      }
+      let hideTooltip = function(d) {
+        tooltip
+          .transition()
+          .duration(200)
+          .style("opacity", 0)
+      }
+    
+      // ---------------------------//
+      //       HIGHLIGHT GROUP      //
+      // ---------------------------//
+    
+      // What to do when one group is hovered
+      let highlight = function(d){
+        // reduce opacity of all groups
+        d3.selectAll(".bubbles").style("opacity", .05)
+        // expect the one that is hovered
+        d3.selectAll("."+d).style("opacity", 1)
+      }
+    
+      // And when it is not hovered anymore
+      let noHighlight = function(d){
+        d3.selectAll(".bubbles").style("opacity", 1)
+      }
+      
+      // ---------------------------//
+      //       CIRCLES              //
+      // ---------------------------//
+      // Add dots
+
+      console.log(data.pop)
+      svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("class", function(d) { return "bubbles " + d.pop })
+          .attr("cx", function (d) { return x(d.year2); } )
+          .attr("cy", function (d) { return y(d.bpm); } )
+          .attr("r", function (d) { return z(d.pop); } )
+          .style("fill", function (d) { return heatmapColour(d.pop); } )
+        // -3- Trigger the functions for hover
+        .on("mouseover", showTooltip )
+        .on("mousemove", moveTooltip )
+        .on("mouseleave", hideTooltip )
+    })
+    
+</script>
